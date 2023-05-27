@@ -14,7 +14,7 @@ public class APIConnection {
     public void getPeliculasPopulares(APIInterface callback) {
         OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder().url("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1")
+        Request request = new Request.Builder().url("https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1")
                 .get()
                 .addHeader("accept", "application/json")
                 .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYjVhMmQwZGYyODNjZjU0MmNjMDljYzQyMGYyNGZhNCIsInN1YiI6IjY0NmY2NzNjMTdjNDQzMDExOWIwZTg2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TpxLlj869gKpa4THo5b_33_1_Boc8ziDMwXrvvKLqaY")
