@@ -1,13 +1,11 @@
 package com.example.aplicacion_peliculas_okode;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+<<<<<<< HEAD
 import com.example.aplicacion_peliculas_okode.API.APIConnection;
 
 import com.example.aplicacion_peliculas_okode.API.APIInterface;
@@ -39,14 +37,30 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Movie> moviesList = new ArrayList<Movie>();
 
     @SuppressLint("MissingInflatedId")
+=======
+
+import java.io.IOException;
+
+
+public class MainActivity extends AppCompatActivity implements CallbackPeliculas {
+    APIConnection api = new APIConnection();
+    TextView prueba;
+    String respuesta;
+>>>>>>> parent of 20bd900 (RecycleView implementado)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         rv_movies = findViewById(R.id.rv_movies);
         api.getResponseMovies(movie);
         moviesList = movie.getMovieList();
+=======
+        prueba = findViewById(R.id.tv1);
+        api.getPeliculasPopulares(this);
+
+>>>>>>> parent of 20bd900 (RecycleView implementado)
 
         TextView prueba = findViewById(R.id.textView2);
         prueba.setText(moviesList.get(0).getTitle());
@@ -56,5 +70,25 @@ public class MainActivity extends AppCompatActivity {
         rv_movies.setAdapter(movieAdapter);**/
     }
 
+<<<<<<< HEAD
 
+=======
+    @Override
+    public void onResponsePeliculas(String responseBody) {
+        respuesta = responseBody;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                prueba.setText(respuesta);
+            }
+        });
+    }
+
+    @Override
+    public void onErrorPeliculas(IOException e) {
+        respuesta = e.toString();
+        //Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+
+    }
+>>>>>>> parent of 20bd900 (RecycleView implementado)
 }
