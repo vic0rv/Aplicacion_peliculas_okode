@@ -1,12 +1,5 @@
 package com.example.aplicacion_peliculas_okode.Models;
 
-import com.example.aplicacion_peliculas_okode.APIInterface;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Movie{

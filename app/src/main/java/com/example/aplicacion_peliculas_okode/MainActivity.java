@@ -8,14 +8,11 @@ import android.widget.TextView;
 import java.io.IOException;
 
 
-import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.IOException;
+import com.example.aplicacion_peliculas_okode.API.APIConnection;
+import com.example.aplicacion_peliculas_okode.API.APIInterface;
 
 
-public class MainActivity extends AppCompatActivity implements CallbackPeliculas {
+public class MainActivity extends AppCompatActivity implements APIInterface {
     APIConnection api = new APIConnection();
     TextView prueba;
     String respuesta;
