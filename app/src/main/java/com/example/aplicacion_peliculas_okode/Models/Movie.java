@@ -1,17 +1,10 @@
 package com.example.aplicacion_peliculas_okode.Models;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.example.aplicacion_peliculas_okode.API.APIInterface;
-import com.example.aplicacion_peliculas_okode.Adapters.MovieAdapter;
-import com.example.aplicacion_peliculas_okode.MainActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Movie implements APIInterface {
 
