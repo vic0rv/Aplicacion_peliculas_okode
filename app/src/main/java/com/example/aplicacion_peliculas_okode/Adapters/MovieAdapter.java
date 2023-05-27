@@ -1,6 +1,8 @@
 package com.example.aplicacion_peliculas_okode.Adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.aplicacion_peliculas_okode.MovieDetails;
 import com.example.aplicacion_peliculas_okode.R;
 import com.squareup.picasso.Picasso;
 
@@ -97,6 +100,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tv_row = itemView.findViewById(R.id.tv_row);
             cv_row = itemView.findViewById(R.id.cv_row);
             iv_row = itemView.findViewById(R.id.iv_row);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, MovieDetails.class);
+                    //intent.putExtra("ID",); PARA COMPLETAR ESTO NECESITO ADQUIRIR MAS CONOCIMIENTOS Y REDBULLES
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
