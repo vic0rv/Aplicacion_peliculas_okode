@@ -1,10 +1,13 @@
 package com.example.aplicacion_peliculas_okode.API;
 
+import com.example.aplicacion_peliculas_okode.Models.Movie;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -15,7 +18,7 @@ import okhttp3.Response;
 public class APIConnection {
 
     public void getResponseMovies(APIInterface callback) {
-
+        ArrayList<Movie> moviesList = new ArrayList<Movie>();
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1")
@@ -28,13 +31,13 @@ public class APIConnection {
             @Override
             public void onFailure(Call call, IOException e) {
                 // Fallo de la solicitud
-                callback.onFailure(e);
+                callback.onFailureMovies(e);
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 // Exito en la solicitud
                 String responseBody = response.body().string();
-                callback.onResponse(responseBody);
+                callback.onResponseGetMovies(responseBody);
             }
         });
     }

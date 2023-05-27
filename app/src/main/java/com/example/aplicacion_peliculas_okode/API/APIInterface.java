@@ -1,10 +1,13 @@
 package com.example.aplicacion_peliculas_okode.API;
 
+import com.example.aplicacion_peliculas_okode.Models.Movie;
+
 import org.json.JSONArray;
+
+import java.util.ArrayList;
 
 public interface APIInterface {
 
-        void onResponse(String responseBody);
-        void onFailure(Exception e);
-
+        void onResponseGetMovies(String responseBody);
+        void onFailureMovies(Exception e);
 }
