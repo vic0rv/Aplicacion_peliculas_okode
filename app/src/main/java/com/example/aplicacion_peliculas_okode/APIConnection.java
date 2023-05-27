@@ -1,8 +1,5 @@
-package com.example.aplicacion_peliculas_okode.API;
 
-
-
-import com.example.aplicacion_peliculas_okode.Models.Movie;
+package com.example.aplicacion_peliculas_okode;
 
 import java.io.IOException;
 
@@ -14,10 +11,8 @@ import okhttp3.Response;
 
 public class APIConnection {
 
-
-   public void getPeliculasPopulares(CallbackPeliculas callback) {
+    public void getPeliculasPopulares(APIInterface callback) {
         OkHttpClient client = new OkHttpClient();
-
 
         Request request = new Request.Builder().url("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1")
                 .get()
@@ -31,6 +26,7 @@ public class APIConnection {
                 // Manejo de errores en caso de fallo de la solicitud
                 callback.onErrorPeliculas(e);
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 

@@ -5,11 +5,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import java.io.IOException;
 
-import com.example.aplicacion_peliculas_okode.API.APIConnection;
-import com.example.aplicacion_peliculas_okode.API.CallbackPeliculas;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity implements CallbackPeliculas {
     APIConnection api = new APIConnection();
@@ -21,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements CallbackPeliculas
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         rv_movies = findViewById(R.id.rv_movies);
+
 
         prueba = findViewById(R.id.textView2);
         api.getPeliculasPopulares(this);
@@ -44,9 +48,10 @@ public class MainActivity extends AppCompatActivity implements CallbackPeliculas
             }
         });
     }
-
     @Override
     public void onErrorPeliculas(IOException e) {
         e.printStackTrace();
+        //Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+
     }
 }

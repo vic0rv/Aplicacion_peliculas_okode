@@ -1,12 +1,15 @@
 package com.example.aplicacion_peliculas_okode.Models;
 
+import com.example.aplicacion_peliculas_okode.APIInterface;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Movie implements APIInterface {
+public class Movie{
 
     int id;
     String title;
@@ -72,8 +75,8 @@ public class Movie implements APIInterface {
         return vote_average;
     }
 
-    @Override
-    public void onResponseGetMovies(String responseBody) {
+
+    /**public void onResponseGetMovies(String responseBody) {
         int id;
         String title;
         String overview;
@@ -119,12 +122,13 @@ public class Movie implements APIInterface {
         }
         //return movieList;
     }
-    @Override
+
     public void onFailureMovies(Exception e) {
         e.printStackTrace();
     }
     public ArrayList<Movie> getMovieList() {
         return movieList;
-    }
+    }**/
+
 
 }

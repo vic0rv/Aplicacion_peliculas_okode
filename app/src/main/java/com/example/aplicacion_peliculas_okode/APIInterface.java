@@ -1,9 +1,9 @@
-package com.example.aplicacion_peliculas_okode.API;
+package com.example.aplicacion_peliculas_okode;
 
-import java.io.IOError;
 import java.io.IOException;
 
-public interface CallbackPeliculas {
+public interface APIInterface {
     void onResponsePeliculas(String responseBody);
     void onErrorPeliculas(IOException e);
+}
 }
