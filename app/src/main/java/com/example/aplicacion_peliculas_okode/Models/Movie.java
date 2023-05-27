@@ -69,7 +69,8 @@ public class Movie{
     }
 
 
-    /**public void onResponseGetMovies(String responseBody) {
+    /**NO LO UTILIZO PARA NADA
+     * public void onResponseGetMovies(String responseBody) {
         int id;
         String title;
         String overview;
