@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.SearchView;
 
 import java.io.IOException;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements APIInterface, Sea
         if (actionBar != null) {
             actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.rojo1)));
         }
-        
+
         APIConnection apiConnection = new APIConnection();
         apiConnection.getPeliculasPopulares(this);
 
