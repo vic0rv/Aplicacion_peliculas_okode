@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
@@ -11,7 +12,6 @@
         android:id="@+id/rv_movies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animationCache="false"
-        android:background="#FFFFFF"
+        android:background="@color/rojo1"
         android:focusable="true"
         android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,13 +1,16 @@
 package com.example.aplicacion_peliculas_okode;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.SearchView;
-import android.widget.TextView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -22,7 +25,8 @@ import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity implements APIInterface, SearchView.OnQueryTextListener{
-    APIConnection api = new APIConnection();
+    ActionBar actionBar;
+    APIConnection api;
     RecyclerView rv_movies;
     SearchView movieSeeker;
     MovieAdapter movieAdapter;
@@ -33,8 +37,9 @@ public class MainActivity extends AppCompatActivity implements APIInterface, Sea
         setContentView(R.layout.activity_main);
         rv_movies = findViewById(R.id.rv_movies);
         movieSeeker = findViewById(R.id.sv_movie);
-
-
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this,R.color.rojo1)));
+        api = new APIConnection();
         api.getPeliculasPopulares(this);
         movieSeeker.setOnQueryTextListener(this);
 
@@ -72,11 +77,6 @@ public class MainActivity extends AppCompatActivity implements APIInterface, Sea
             e.printStackTrace();
         }
     }
-    public void MoveToDetails(String title){
-        Intent intent = new Intent(this, MovieDetails.class);
-        intent.putExtra("title", title);
-        startActivity(intent);
-    }
 
     @Override
     public void onErrorPeliculas(IOException e) {
@@ -94,5 +94,10 @@ public class MainActivity extends AppCompatActivity implements APIInterface, Sea
     public boolean onQueryTextChange(String newText) {
         movieAdapter.search(newText);
         return false;
+    }
+    public void MoveToDetails(String title){
+        Intent intent = new Intent(this, MovieDetails.class);
+        intent.putExtra("title", title);
+        startActivity(intent);
     }
 }

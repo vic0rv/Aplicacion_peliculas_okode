@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Aplicacion_peliculas_okode</string>
+    <string name="app_name"><b>OKODE PELÍCULAS</b></string>
+    <string name="original_title"><b>Titulo original:</b> </string>
+    <string name="release_data"><b>Fecha de lanzamiento:</b> </string>
+    <string name="language"><b>Idioma original:</b> </string>
+    <string name="vote_average"><b>Valoración:</b> </string>
+    <string name="overview"><b>Sinopsis:</b> </string>
+
 </resources>

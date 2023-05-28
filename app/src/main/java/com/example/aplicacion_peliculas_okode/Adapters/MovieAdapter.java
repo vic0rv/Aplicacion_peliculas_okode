@@ -49,9 +49,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (position % 2 == 0) {
-            holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.gris2));
+            holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.black));
         } else {
-            holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.gris1));
+            holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.black));
         }
         String title = titles.get(position);
         String image = "https://image.tmdb.org/t/p/w500" + images.get(position);
