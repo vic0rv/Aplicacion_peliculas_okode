@@ -1,15 +1,11 @@
 package com.example.aplicacion_peliculas_okode.Adapters;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,19 +36,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         this.listener = listener;
 
     }
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler_view, parent, false);
         return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (position % 2 == 0) {
-            holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.black));
-        } else {
-            holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.black));
-        }
         String title = titles.get(position);
         String image = "https://image.tmdb.org/t/p/w500" + images.get(position);
         holder.tv_row.setText(title);
@@ -64,7 +54,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             }
         });
     }
-    @SuppressLint("NotifyDataSetChanged")
     public void search(String text) {
         if (text.isEmpty()) {
             titles.clear();
@@ -107,7 +96,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView tv_row;
         CardView cv_row;
         ImageView iv_row;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             tv_row = itemView.findViewById(R.id.tv_row);
             cv_row = itemView.findViewById(R.id.cv_row);

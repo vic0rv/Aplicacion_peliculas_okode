@@ -37,10 +37,13 @@ public class MainActivity extends AppCompatActivity implements APIInterface, Sea
         setContentView(R.layout.activity_main);
         rv_movies = findViewById(R.id.rv_movies);
         movieSeeker = findViewById(R.id.sv_movie);
+
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this,R.color.rojo1)));
+
         api = new APIConnection();
         api.getPeliculasPopulares(this);
+
         movieSeeker.setOnQueryTextListener(this);
 
     }

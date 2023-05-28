@@ -73,7 +73,7 @@ public class MovieDetails extends AppCompatActivity implements APIInterface {
                     tvDate.setText(releaseDate);
                     tvLanguage.setText(language);
                     Picasso.get().load(backdrop).into(ivBackdrop);
-                    tvVote.setText(voteAvg.toString());
+                    tvVote.setText(voteAvg.toString() + " / 10");
                     tvOverview.setText(overview);
                 }
             });

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Movie{
-
     int id;
     String title;
     int[] genre_ids;
@@ -39,14 +38,6 @@ public class Movie{
 
     public String getTitle() {
         return title;
-    }
-
-    public String[] getAllTitles(ArrayList<Movie> movieLista){
-        String[] titlesList = new String[movieLista.size()];
-        for (int i = 0; i< movieLista.size();i++){
-            titlesList[i] = movieLista.get(i).getTitle();
-        }
-        return titlesList;
     }
 
     public int[] getGenre_ids() {
@@ -105,7 +96,7 @@ public class Movie{
         this.vote_average = vote_average;
     }
 
-    /**public ArrayList<Movie> getMovieList(JSONArray results){
+    public ArrayList<Movie> getMovieList(JSONArray results){
         ArrayList<Movie> movieList = new ArrayList<>();
         try {
             // Recorrer la lista de pelis
@@ -136,6 +127,6 @@ public class Movie{
         }
         return movieList;
     }
-     **/
+
 
 }

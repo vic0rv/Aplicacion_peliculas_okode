@@ -14,22 +14,26 @@ public class APIConnection {
     public void getPeliculasPopulares(APIInterface callback) {
         OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder().url("https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1")
+        String url = "https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1";
+        String autorization = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYjVhMmQwZGYyODNjZjU0MmNjMDljYzQyMGYyNGZhNCIsInN1YiI6IjY0NmY2NzNjMTdjNDQzMDExOWIwZTg2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TpxLlj869gKpa4THo5b_33_1_Boc8ziDMwXrvvKLqaY";
+
+        Request request = new Request.Builder()
+                .url(url)
                 .get()
                 .addHeader("accept", "application/json")
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYjVhMmQwZGYyODNjZjU0MmNjMDljYzQyMGYyNGZhNCIsInN1YiI6IjY0NmY2NzNjMTdjNDQzMDExOWIwZTg2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TpxLlj869gKpa4THo5b_33_1_Boc8ziDMwXrvvKLqaY")
+                .addHeader("Authorization", autorization)
                 .build();
 
-        client.newCall(request).enqueue(new Callback() {
+        client.newCall(request).enqueue(new Callback() { //enqueue en lugar de execute porque con execute relantizaba la aplicación
             @Override
             public void onFailure(Call call, IOException e) {
-                // Manejo de errores en caso de fallo de la solicitud
+                // En caso de fallo de la solicitud
                 callback.onErrorPeliculas(e);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                // En caso de acierto en la solicitud
                 String responseBody = response.body().string();
                 callback.onResponsePeliculas(responseBody);
             }
