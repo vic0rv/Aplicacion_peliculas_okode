@@ -1,6 +1,11 @@
 package com.example.aplicacion_peliculas_okode.Models;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Movie{
 
@@ -68,61 +73,69 @@ public class Movie{
         return vote_average;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    /**NO LO UTILIZO PARA NADA
-     * public void onResponseGetMovies(String responseBody) {
-        int id;
-        String title;
-        String overview;
-        String original_language;
-        String poster_path;
-        String release_date;
-        double vote_average;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenre_ids(int[] genre_ids) {
+        this.genre_ids = genre_ids;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
+    }
+
+    /**public ArrayList<Movie> getMovieList(JSONArray results){
         ArrayList<Movie> movieList = new ArrayList<>();
         try {
-
-            JSONObject json = new JSONObject(responseBody);
-            JSONArray results = json.getJSONArray("results");
-
             // Recorrer la lista de pelis
             for (int i = 0; i < results.length(); i++) {
                 JSONObject JSONmovie = results.getJSONObject(i);
-                JSONArray JSONid_genders = JSONmovie.getJSONArray("genre_ids");
-
-                //Valores para crear objeto movie
-
-                id = JSONmovie.getInt("id");
-                title = JSONmovie.getString("title");
 
                 //Array con los generos de la película
+                JSONArray JSONid_genders = JSONmovie.getJSONArray("genre_ids");
                 int[] id_genders = new int[JSONid_genders.length()];
                 for (int j = 0; j < JSONid_genders.length(); j++) {
                     id_genders[j] = JSONid_genders.getInt(j);
                 }
 
-                overview = JSONmovie.getString("overview");
-                original_language = JSONmovie.getString("original_language");
-                poster_path = JSONmovie.getString("poster_path");
-                release_date = JSONmovie.getString("release_date");
-                vote_average = JSONmovie.getDouble("vote_average");
+                Movie movie = new Movie();
+                movie.setId(JSONmovie.getInt("id"));
+                movie.setTitle(JSONmovie.getString("title"));
+                movie.setGenre_ids(id_genders);
+                movie.setOverview(JSONmovie.getString("overview"));
+                movie.setOriginal_language(JSONmovie.getString("original_language"));
+                movie.setPoster_path(JSONmovie.getString("poster_path"));
+                movie.setRelease_date(JSONmovie.getString("release_date"));
+                movie.setVote_average(JSONmovie.getDouble("vote_average"));
 
-                Movie movie = new Movie(id,title,id_genders,overview,original_language,poster_path,release_date,vote_average);
                 movieList.add(movie);
             }
-        this.movieList = movieList;
-
-        } catch (JSONException e) {
+        }catch (JSONException e) {
             e.printStackTrace();
         }
-        //return movieList;
-    }
-
-    public void onFailureMovies(Exception e) {
-        e.printStackTrace();
-    }
-    public ArrayList<Movie> getMovieList() {
         return movieList;
-    }**/
-
+    }
+     **/
 
 }

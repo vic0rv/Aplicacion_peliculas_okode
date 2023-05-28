@@ -25,13 +25,19 @@ import java.util.stream.Collectors;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
     private ArrayList<String> titles; private ArrayList<String> images;
     private ArrayList<String> titlesToSeek; private ArrayList<String> imagesToSeek;
-    public MovieAdapter(ArrayList<String> titles,ArrayList<String> images) {
+    OnMovieClickListener listener;
+
+    public interface OnMovieClickListener{
+        void onMovieClick(String title);
+    }
+    public MovieAdapter(ArrayList<String> titles,ArrayList<String> images, OnMovieClickListener listener) {
         this.titles = titles;
         this.images = images;
         titlesToSeek = new ArrayList<>();
         titlesToSeek.addAll(titles);
         imagesToSeek = new ArrayList<>();
         imagesToSeek.addAll(images);
+        this.listener = listener;
 
     }
     @NonNull
@@ -41,7 +47,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         if (position % 2 == 0) {
             holder.cv_row.setBackgroundColor(ContextCompat.getColor(holder.tv_row.getContext(), R.color.gris2));
         } else {
@@ -51,6 +57,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         String image = "https://image.tmdb.org/t/p/w500" + images.get(position);
         holder.tv_row.setText(title);
         Picasso.get().load(image).into(holder.iv_row);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMovieClick(title);
+            }
+        });
     }
     @SuppressLint("NotifyDataSetChanged")
     public void search(String text) {
@@ -100,15 +112,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tv_row = itemView.findViewById(R.id.tv_row);
             cv_row = itemView.findViewById(R.id.cv_row);
             iv_row = itemView.findViewById(R.id.iv_row);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, MovieDetails.class);
-                    //intent.putExtra("ID",); PARA COMPLETAR ESTO NECESITO ADQUIRIR MAS CONOCIMIENTOS Y REDBULLES
-                    context.startActivity(intent);
-                }
-            });
+
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -58,13 +59,23 @@ public class MainActivity extends AppCompatActivity implements APIInterface, Sea
                 @Override
                 public void run() {
                     rv_movies.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    movieAdapter = new MovieAdapter(arrayTitulos,arrayPosters);
+                    movieAdapter = new MovieAdapter(arrayTitulos, arrayPosters, new MovieAdapter.OnMovieClickListener() {
+                        @Override
+                        public void onMovieClick(String title) {
+                            MoveToDetails(title);
+                        }
+                    });
                     rv_movies.setAdapter(movieAdapter);
                 }
             });
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    public void MoveToDetails(String title){
+        Intent intent = new Intent(this, MovieDetails.class);
+        intent.putExtra("title", title);
+        startActivity(intent);
     }
 
     @Override
